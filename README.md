@@ -45,100 +45,101 @@ customize:
   sensor.wtw_exhaust_fan_speed:
     icon: mdi:fan
 
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/filter_state"
-  name: "WTW Filter Status"
-  qos: 0
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/comfort_temp"
-  name: "WTW Comfort Temperature"
-  qos: 0
-  unit_of_measurement: '°C'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/outside_air_temp"
-  name: "WTW Outside Temperature"
-  qos: 0
-  unit_of_measurement: '°C'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/supply_air_temp"
-  name: "WTW Supply Temperature"
-  qos: 0
-  unit_of_measurement: '°C'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/return_air_temp"
-  name: "WTW Return Temperature"
-  qos: 0
-  unit_of_measurement: '°C'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/exhaust_air_temp"
-  name: "WTW Exhaust Temperature"
-  qos: 0
-  unit_of_measurement: '°C'
+sensor:
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/filter_state"
+    name: "WTW Filter Status"
+    qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/comfort_temp"
+    name: "WTW Comfort Temperature"
+    qos: 0
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/outside_air_temp"
+    name: "WTW Outside Temperature"
+    qos: 0
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/supply_air_temp"
+    name: "WTW Supply Temperature"
+    qos: 0
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/return_air_temp"
+    name: "WTW Return Temperature"
+    qos: 0
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/exhaust_air_temp"
+    name: "WTW Exhaust Temperature"
+    qos: 0
+    unit_of_measurement: '°C'
 
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/return_air_level"
-  name: "WTW Return Air Level"
-  qos: 0
-  unit_of_measurement: '%'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/supply_air_level"
-  name: "WTW Supply Air Level"
-  qos: 0
-  unit_of_measurement: '%'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/ventilation_level"
-  name: "WTW Ventilation Level"
-  qos: 0
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/intake_fan_active"
-  name: "WTW Intake Fan Active"
-  qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/return_air_level"
+    name: "WTW Return Air Level"
+    qos: 0
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/supply_air_level"
+    name: "WTW Supply Air Level"
+    qos: 0
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/ventilation_level"
+    name: "WTW Ventilation Level"
+    qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/intake_fan_active"
+    name: "WTW Intake Fan Active"
+    qos: 0
 
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/intake_fan_speed"
-  name: "WTW Intake Fan Speed"
-  qos: 0
-  unit_of_measurement: '%'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/exhaust_fan_speed"
-  name: "WTW Exhaust Fan Speed"
-  qos: 0
-  unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/intake_fan_speed"
+    name: "WTW Intake Fan Speed"
+    qos: 0
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/exhaust_fan_speed"
+    name: "WTW Exhaust Fan Speed"
+    qos: 0
+    unit_of_measurement: '%'
 
 
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/valve_bypass_percentage"
-  name: "WTW Bypass %"
-  qos: 0
-  unit_of_measurement: '%'
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/valve_preheating"
-  name: "WTW Valve Preheating"
-  qos: 0
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/bypass_motor_current"
-  name: "WTW Bypass motor current"
-  qos: 0
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/preheating_motor_current"
-  name: "WTW Preheating motor current"
-  qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/valve_bypass_percentage"
+    name: "WTW Bypass %"
+    qos: 0
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/valve_preheating"
+    name: "WTW Valve Preheating"
+    qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/bypass_motor_current"
+    name: "WTW Bypass motor current"
+    qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/preheating_motor_current"
+    name: "WTW Preheating motor current"
+    qos: 0
 
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/bypass_factor"
-  name: "WTW Bypass Factor"
-  qos: 0
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/bypass_step"
-  name: "WTW Bypass Step"
-  qos: 0
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/bypass_correction"
-  name: "WTW Bypass Correction"
-  qos: 0
-- platform: mqtt
-  state_topic: "house/ventilation/whr930/summermode"
-  name: "WTW Summer mode"
-  qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/bypass_factor"
+    name: "WTW Bypass Factor"
+    qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/bypass_step"
+    name: "WTW Bypass Step"
+    qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/bypass_correction"
+    name: "WTW Bypass Correction"
+    qos: 0
+  - platform: mqtt
+    state_topic: "house/ventilation/whr930/summermode"
+    name: "WTW Summer mode"
+    qos: 0
 
 ```
