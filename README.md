@@ -16,7 +16,7 @@ Based on the work that Mosibi did for the WHR930 and the reverse engineering the
 
 
 # Home Assistant Configuration
-
+![Image](https://raw.githubusercontent.com/LukasdeBoer/esp8266-whr930-mqtt/master/homeassistant.png)
 ```
 input_number:
   set_wtw_ventilation_level:
