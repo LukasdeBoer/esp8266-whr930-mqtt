@@ -175,8 +175,8 @@ void get_fan_status() {
     byte command[] = {0x07, 0xF0, 0x00, 0x0B, 0x00, 0xB8, 0x07, 0x0F};
     send_command(command, sizeof(command));
 
-    float IntakeFanSpeed = (int)data[7];
-    float ExhaustFanSpeed = (int)data[8];
+    float IntakeFanSpeed = (int)data[6];
+    float ExhaustFanSpeed = (int)data[7];
 
     sprintf(log_msg, "received fan speeds (intake, exhaust): %.2f, %.2f", IntakeFanSpeed, ExhaustFanSpeed); log_message(log_msg);
     
