@@ -14,6 +14,8 @@ Based on the work that Mosibi did for the WHR930 and the reverse engineering the
   * RJ45 3 (green/white) -> DB9 3
   * RJ45 8 (brown) -> DB9 5
 
+# lovelace card!
+See https://github.com/timjong93/lovelace-wtw for a nice visualization of the data this module creates.
 
 # Home Assistant Configuration
 ![Image](https://raw.githubusercontent.com/LukasdeBoer/esp8266-whr930-mqtt/master/homeassistant.png)
