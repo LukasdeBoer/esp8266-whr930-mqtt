@@ -19,6 +19,7 @@ const char* mqtt_topic_base = "house/ventilation/whr930";
 const char* mqtt_logtopic = "house/ventilation/whr930/log";
 
 const char* mqtt_set_ventilation_topic = "house/ventilation/whr930/setventilation";
+const char* mqtt_set_temperature_topic = "house/ventilation/whr930/settemperature";
 const char* mqtt_get_update_topic = "house/ventilation/whr930/update";
 
 //useful for debugging, outputs info to a separate mqtt topic
@@ -70,23 +71,27 @@ void mqtt_callback(char* topic, byte* payload, unsigned int length) {
 
   if (strcmp(topic, mqtt_set_ventilation_topic) == 0)
   {
-    if (strcmp(msg, "1") == 0) {
-      log_message("set ventilation to level 1");
-      byte command[] = {0x07, 0xF0, 0x00, 0x99, 0x01, 0x02, 0x49, 0x07, 0x0F};
-      send_command(command, sizeof(command));
-    }
-    if (strcmp(msg, "2") == 0) {
-      log_message("set ventilation to level 2");
-      byte command[] = {0x07, 0xF0, 0x00, 0x99, 0x01, 0x03, 0x4A, 0x07, 0x0F};
-      send_command(command, sizeof(command));
-    }
-    if (strcmp(msg, "3") == 0) {
-      log_message("set ventilation to level 3");
-      byte command[] = {0x07, 0xF0, 0x00, 0x99, 0x01, 0x04, 0x4B, 0x07, 0x0F};
-      send_command(command, sizeof(command));
-    }
+    String ventilation_string(msg);
+    int ventilation = ventilation_string.toInt() + 1;
+    int checksum = (0 + 153 + 1 + ventilation + 173) % 256;
+
+    sprintf(log_msg, "set ventilation to %d", ventilation - 1); log_message(log_msg);
+    byte command[] = {0x07, 0xF0, 0x00, 0x99, 0x01, ventilation, checksum, 0x07, 0x0F};
+    send_command(command, sizeof(command));
   }
-  
+  if (strcmp(topic, mqtt_set_temperature_topic) == 0)
+  {
+    String temperature_string(msg);
+    int temperature = temperature_string.toInt();
+
+    temperature = (temperature + 20) * 2;
+    int checksum = (0 + 211 + 1 + temperature + 173) % 256;
+    
+    sprintf(log_msg, "set temperature to %d", temperature); log_message(log_msg);
+    byte command[] = {0x07, 0xF0, 0x00, 0xD3, 0x01, temperature, checksum, 0x07, 0x0F};
+    send_command(command, sizeof(command));
+  }
+
   if (strcmp(topic, mqtt_get_update_topic) == 0)
   {    
     log_message("Updating..");
@@ -281,6 +286,7 @@ void mqtt_reconnect()
     if (mqtt_client.connect(wifi_hostname, mqtt_username, mqtt_password))
     {
       mqtt_client.subscribe(mqtt_set_ventilation_topic);
+      mqtt_client.subscribe(mqtt_set_temperature_topic);
       mqtt_client.subscribe(mqtt_get_update_topic);
     }
     else

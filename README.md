@@ -21,11 +21,20 @@ Based on the work that Mosibi did for the WHR930 and the reverse engineering the
 input_number:
   set_wtw_ventilation_level:
     name: Set ventilation level
-    initial: 2
-    min: 0
+    initial: 1
+    min: 1
     max: 3
     step: 1
-    mode: box
+    mode: slider
+
+input_number:
+  set_wtw_temperature:
+    name: Set temperature
+    initial: 20
+    min: 10
+    max: 25
+    step: 1
+    mode: slider
 
 automation:
   - alias: Ventilation level slider moved in GUI
@@ -38,6 +47,16 @@ automation:
         topic: house/ventilation/whr930/set_ventilation_level
         retain: false
         payload: "{{ states('input_number.set_wtw_ventilation_level') | int }}"
+  - alias: Temperature level slider moved in GUI
+    trigger:
+      platform: state
+      entity_id: input_number.set_wtw_temperature
+    action:
+      service: mqtt.publish
+      data_template:
+        topic: house/ventilation/whr930/set_temperature
+        retain: false
+        payload: "{{ states('input_number.set_wtw_temperature') | int }}"
 
 customize:
   sensor.wtw_intake_fan_speed:
