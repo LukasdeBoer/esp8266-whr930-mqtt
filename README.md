@@ -46,7 +46,7 @@ automation:
     action:
       service: mqtt.publish
       data_template:
-        topic: house/ventilation/whr930/set_ventilation_level
+        topic: house/ventilation/whr930/setventilation
         retain: false
         payload: "{{ states('input_number.set_wtw_ventilation_level') | int }}"
   - alias: Temperature level slider moved in GUI
@@ -56,7 +56,7 @@ automation:
     action:
       service: mqtt.publish
       data_template:
-        topic: house/ventilation/whr930/set_temperature
+        topic: house/ventilation/whr930/settemperature
         retain: false
         payload: "{{ states('input_number.set_wtw_temperature') | int }}"
 
