@@ -1,4 +1,8 @@
+
+**PROJECT DEPRECATED !!**
+
 # esp8266-whr930-mqtt
+
 Based on the work that Mosibi did for the WHR930 and the reverse engineering the guys at See Solutions did, but now running on an ESP8266 based chip instead of a Raspberry Pi!
 
 * http://www.see-solutions.de/sonstiges/Protokollbeschreibung_ComfoAir.pdf
